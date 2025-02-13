@@ -9,9 +9,9 @@
         </div> -->
         <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 animate-reviews">
           <div class="col w-75 mx-auto" *ngFor="let film of this.films$ | async" >
-            <!-- <app-review
-            [review]="film"
-            ></app-review> -->
+            <app-film
+            [film]="film"
+            ></app-film>
           </div>
         </div>
       </div>

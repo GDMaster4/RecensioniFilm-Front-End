@@ -1,0 +1,25 @@
+.film-card {
+    background: linear-gradient(135deg, #f3f4f6, #ffffff);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .film-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .text-muted {
+    font-size:1 rem;
+    color: #6c757d;
+  }  

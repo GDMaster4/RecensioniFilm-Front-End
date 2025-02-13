@@ -14,6 +14,7 @@ import { DeleteReviewComponent } from './components/delete-review/delete-review.
 import { ReviewDetailComponent } from './components/review-detail/review-detail.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { FilmsComponent } from './pages/films/films.component';
+import { FilmComponent } from './components/film/film.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FilmsComponent } from './pages/films/films.component';
     DeleteReviewComponent,
     AddReviewComponent,
     FilmsComponent,
+    FilmComponent,
   ],
   imports: [
     BrowserModule,

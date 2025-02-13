@@ -23,8 +23,12 @@ const routes: Routes = [
   },
   {
     path:"films",
-    pathMatch:"full",
-    component:FilmsComponent
+    children: [
+      {
+        path: '',
+        component:FilmsComponent,
+      },
+    ]
   },
 ];
 
