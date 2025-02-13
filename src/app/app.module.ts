@@ -13,6 +13,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { DeleteReviewComponent } from './components/delete-review/delete-review.component';
 import { ReviewDetailComponent } from './components/review-detail/review-detail.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { FilmsComponent } from './pages/films/films.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
     ReviewFiltersComponent,
     DeleteReviewComponent,
     AddReviewComponent,
+    FilmsComponent,
   ],
   imports: [
     BrowserModule,

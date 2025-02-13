@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { reviewFiltersResolver } from './resolvers/review-filters.resolver';
 import { ReviewsResolver } from './resolvers/review.resolver';
+import { FilmsComponent } from './pages/films/films.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
       reviews:ReviewsResolver
     },
     runGuardsAndResolvers:"paramsOrQueryParamsChange"
-  }
+  },
+  {
+    path:"films",
+    pathMatch:"full",
+    component:FilmsComponent
+  },
 ];
 
 @NgModule({

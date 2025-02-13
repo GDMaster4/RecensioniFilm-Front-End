@@ -1,0 +1,19 @@
+<div class="container-fluid mt-5">
+    <h1 class="mb-12 text-center">Film</h1>
+    <div class="row" style="margin-bottom: 2%;">
+      <div class="container-fluid mt-5">
+        <!-- <div class="row justify-content-center">
+          <div class="col-md-10">
+            <app-add-review></app-add-review>
+          </div>
+        </div> -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 animate-reviews">
+          <div class="col w-75 mx-auto" *ngFor="let film of this.films$ | async" >
+            <!-- <app-review
+            [review]="film"
+            ></app-review> -->
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
