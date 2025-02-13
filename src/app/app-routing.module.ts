@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { reviewFiltersResolver } from './resolvers/review-filters.resolver';
 import { ReviewsResolver } from './resolvers/review.resolver';
 import { FilmsComponent } from './pages/films/films.component';
+import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
         path: '',
         component:FilmsComponent,
       },
+      {
+        path: ':id/reviews',
+        component: FilmReviewsComponent
+      }
     ]
   },
 ];
