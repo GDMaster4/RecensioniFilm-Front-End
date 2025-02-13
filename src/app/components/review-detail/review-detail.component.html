@@ -1,0 +1,91 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-Titolo" id="modal-basic-Titolo">Detail Review</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="revForm">
+			<div class="mb-3">
+				<label for="film">Film da recensire</label>
+				<div class="input-group">
+                    <select formControlName="Film">
+						<option  *ngFor="let film of films$ | async" [value]="film.id">
+							{{film.Titolo}}
+						</option>
+                    </select>
+				</div>
+                <br>
+				<label for="autore">Autore delle recensione</label>
+				<div class="input-group">
+					<input
+						id="autore"
+						class="form-control"
+						name="autore"
+						formControlName="Autore"
+                        type="text"
+                    >
+				</div>
+                <br>
+                <div class="row">
+                    <div class="col sm-2 mb-3">
+                        <label for="DataInserimento">Data Inserimento</label>
+                        <div class="input-group">
+                            <input
+                                id="DataInserimento"
+                                class="form-control"
+                                placeholder="yyyy-mm-dd"
+                                name="dp"
+                                ngbDatepicker
+                                #dp="ngbDatepicker"
+                                formControlName="DataInserimento"
+                                readonly
+                            />
+                        </div>
+					</div>
+                    <div class="col sm-2 mb-3">
+                        <label for="DataModifica">Data ultima modifica</label>
+                        <div class="input-group">
+                            <input
+                                id="DataModifica"
+                                class="form-control"
+                                placeholder="yyyy-mm-dd"
+                                name="dp"
+                                ngbDatepicker
+                                #dp="ngbDatepicker"
+                                formControlName="DataModifica"
+                                readonly
+                            />
+                        </div>
+					</div>
+                </div>
+                <br>
+				<label for="testo">Testo della recensione</label>
+				<div class="input-group">
+					<textarea
+						id="testo"
+						class="form-control"
+						name="testo"
+						formControlName="Testo">
+					</textarea>
+				</div>
+                <br>
+				<label for="valutazione">Valutazione delle recensione</label>
+				<div class="input-group">
+					<input
+						id="valutazione"
+						class="form-control"
+						name="valutazione"
+						formControlName="Valutazione"
+                        type="number"
+						[min]="1"
+						[max]="5"
+                    >
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark w-100" (click)="updateReview()">Save</button>
+	</div>
+</ng-template>
+<button class="btn btn-lg btn-outline-primary w-50" (click)="open(content)">Detail Review</button>

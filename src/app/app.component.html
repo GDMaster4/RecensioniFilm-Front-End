@@ -1,0 +1,16 @@
+<nav class="navbar navbar-dark bg-primary mb-3">
+  <div class="container-fluid">
+    <!-- Logo or Brand Name -->
+    <a class="navbar-brand fw-bold" [routerLink]="['/home']" (click)="home()">
+      HOME
+    </a>
+
+    <!-- Navbar Links -->
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white fw-bold" [routerLink]="['/films']" (click)="premuto($event)">FILM</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+<div class="card mt-2">
+    <div class="card-body">
+      <h5 class="card-title">{{ review!.Film.Titolo}} ({{review!.Film.AnnoUscita}})</h5>
+      <h6 class="card-subtitle mb-2 text-muted" >Autore: {{review!.Autore}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted" >{{review!.Testo}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Data Inserimento: {{review!.DataInserimento}}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Ultima modifica: {{review!.DataUltModifica}}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Valutazione:
+        <ng-container *ngFor="let star of getStarsArray(review!.Valutazione)">
+          &#9733;
+        </ng-container>
+      </h6>
+      <app-review-detail [review]="review"></app-review-detail>
+      <app-delete-review [id]="review!.id"></app-delete-review>
+    </div>
+</div>
