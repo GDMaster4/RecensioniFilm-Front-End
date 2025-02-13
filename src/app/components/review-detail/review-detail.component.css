@@ -1,0 +1,24 @@
+.modal-body {
+    backdrop-filter: blur(10px);
+}
+
+.form-control-custom {
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control-custom:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+}  

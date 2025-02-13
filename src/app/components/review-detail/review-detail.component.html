@@ -1,5 +1,5 @@
 <ng-template #content let-modal>
-	<div class="modal-header">
+	<div class="modal-header bg-light shadow-sm">
 		<h4 class="modal-Titolo" id="modal-basic-Titolo">Detail Review</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
@@ -8,7 +8,7 @@
 			<div class="mb-3">
 				<label for="film">Film da recensire</label>
 				<div class="input-group">
-                    <select formControlName="Film">
+					<select formControlName="Film" class="form-select form-control-custom">
 						<option  *ngFor="let film of films$ | async" [value]="film.id">
 							{{film.Titolo}}
 						</option>
@@ -85,7 +85,7 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark w-100" (click)="updateReview()">Save</button>
+		<button type="button" class="btn btn-gradient w-100" (click)="updateReview()">Save</button>
 	</div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary w-50" (click)="open(content)">Detail Review</button>
+<button class="btn btn-gradient w-50" (click)="open(content)">Detail Review</button>
