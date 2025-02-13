@@ -7,16 +7,11 @@ import { ReviewsResolver } from './resolvers/review.resolver';
 const routes: Routes = [
   {
     path:"",
-    redirectTo:"/reviews?maxReviews=5",
+    redirectTo:"/home?maxReviews=5",
     pathMatch:"full"
   },
   {
     path:"home",
-    redirectTo:"/reviews?maxReviews=5",
-    pathMatch:"full"
-  },
-  {
-    path:"reviews",
     pathMatch:"prefix",
     component:HomeComponent,
     resolve:{
