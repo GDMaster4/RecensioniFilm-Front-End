@@ -22,7 +22,6 @@ export class ReviewDetailComponent implements OnInit,OnDestroy
     Film:['', Validators.required],
     DataInserimento: [''],
     DataModifica:[''],
-    // Autore:['', Validators.required],
     Testo:['', Validators.required],
     Valutazione:[0, Validators.required]
   });
