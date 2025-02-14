@@ -16,6 +16,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { FilmsComponent } from './pages/films/films.component';
 import { FilmComponent } from './components/film/film.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     FilmsComponent,
     FilmComponent,
     FilmReviewsComponent,
+    IfAuthenticatedDirective,
   ],
   imports: [
     BrowserModule,
