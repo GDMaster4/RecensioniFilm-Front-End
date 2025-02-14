@@ -21,6 +21,7 @@ import { AuthInterceptor } from './utils/auth-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { LoginComponent } from './pages/login/login.component';
     IfAuthenticatedDirective,
     NavUserComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

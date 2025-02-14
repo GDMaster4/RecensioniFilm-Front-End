@@ -1,0 +1,67 @@
+/* Sezione del login con sfondo sfumato */
+.register-section {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card personalizzata */
+.card-custom {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Input personalizzati */
+.form-control {
+    border: 2px solid #6a11cb;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Bottone con gradiente */
+.btn-gradient {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+}
+
+/* Link di registrazione */
+.underline-on-hover {
+    color: #2575fc;
+    text-decoration: none;
+}
+
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+
+/* Messaggio di errore */
+.text-danger {
+    color: red;
+    font-size: 1rem;
+}
