@@ -16,6 +16,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { FilmsComponent } from './pages/films/films.component';
 import { FilmComponent } from './components/film/film.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,12 @@ import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     {
