@@ -1,10 +1,12 @@
 <div class="card mt-3 shadow-lg border-0 review-card">
   <div class="card-body p-4">
+    <div class="d-flex justify-content-between">
+      <p class="card-text">Inserita il {{review!.DataInserimento | date:'dd-MM-yyyy'}}</p>
+      <p class="card-text">Ultima modifica: {{review!.DataUltModifica | date:'dd-MM-yyyy'}}</p>
+    </div>
     <h5 class="card-title text-center" *ngIf="!isReviewFilm()">{{ review!.Film.Titolo}} ({{review!.Film.AnnoUscita}})</h5>
     <h6 class="card-subtitle text-center mb-4 text-muted" *ngIf="!isCurrentUserAutor()">Autore: {{review!.Autore.fullname}}</h6>
-    <p class="card-text">{{review!.Testo}}</p>
-    <p class="text-muted mb-1">Data Inserimento: {{review!.DataInserimento}}</p>
-    <p class="text-muted mb-2">Ultima modifica: {{review!.DataUltModifica}}</p>
+    <p style="font-size: 2rem">{{review!.Testo}}</p>
     <div class="d-flex justify-content-center align-items-center mb-3">
       <span class="me-2">Valutazione:</span>
       <ng-container *ngFor="let star of getStarsArray(review!.Valutazione)">
