@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { enviroment } from '../../../collegamento';
 import { Review } from '../entities/review.entity';
 import { AuthService } from './auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface ReviewFilters
 {
@@ -21,7 +22,7 @@ export class ReviewService
   reviews$= this._reviews$.asObservable();
   filtri:ReviewFilters | null=null;
 
-  constructor(protected http:HttpClient, protected authSrv:AuthService)
+  constructor(protected http:HttpClient, protected authSrv:AuthService ,protected toastSrv:ToastrService)
   {
     authSrv.currentUser$.subscribe(user=>{
       if(user) {
@@ -78,7 +79,7 @@ export class ReviewService
         this._reviews$.next(tmp);
         this.refreshReviews();
       },error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
   
@@ -93,7 +94,7 @@ export class ReviewService
         this._reviews$.next(tmp);
         this.refreshReviews();
       },error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
 
@@ -108,7 +109,7 @@ export class ReviewService
         this._reviews$.next(tmp);
         this.refreshReviews();
       }, error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
 }
