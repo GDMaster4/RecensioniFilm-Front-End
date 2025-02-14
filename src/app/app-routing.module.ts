@@ -5,12 +5,24 @@ import { reviewFiltersResolver } from './resolvers/review-filters.resolver';
 import { ReviewsResolver } from './resolvers/review.resolver';
 import { FilmsComponent } from './pages/films/films.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
     path:"",
-    redirectTo:"/home?maxReviews=5",
+    redirectTo:"/login",
     pathMatch:"full"
+  },
+  {
+    path:"login",
+    pathMatch:"full",
+    component:LoginComponent
+  },
+  {
+    path:"register",
+    pathMatch:"full",
+    component:RegisterComponent
   },
   {
     path:"home",

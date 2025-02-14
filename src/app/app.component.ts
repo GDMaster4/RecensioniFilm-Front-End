@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,13 @@ import { Component } from '@angular/core';
 export class AppComponent
 {
   title = 'Front-End';
+  currentUser$ = this.authSrv.currentUser$;
+
+  constructor(protected authSrv: AuthService){ }
+
+  logout(){
+    this.authSrv.logout()
+  }
 
   premuto(event:Event)
   {

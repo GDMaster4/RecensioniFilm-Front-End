@@ -1,0 +1,85 @@
+<section class="register-section py-3 py-md-3 vh-100 d-flex align-items-center text-primary border-primary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-8 col-sm-12">
+          <div class="card-custom round ed-3 shadow-lg">
+            <h3 class="text-center mb-4 fw-bold">REGISTRAZIONE</h3>
+            <form (ngSubmit)="registrazione()" [formGroup]="registerForm">
+                <div class="form-outline mb-4">
+                    <label class="form-label text-primary fw-bold ">Nome</label>
+                    <input
+                    title="nome"
+                    type="text"
+                    class="form-control border-primary"
+                    formControlName="firstName"
+                    placeholder="Inserisci il tuo nome"
+                    required
+                    />
+                </div>
+                
+                <div class="form-outline mb-4">
+                    <label class="form-label text-primary fw-bold ">Cognome</label>
+                    <input
+                    title="cogn"
+                    type="text"
+                    class="form-control border-primary"
+                    formControlName="lastName"
+                    placeholder="Inserisci il tuo cognome"
+                    required
+                    />
+                </div>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label text-primary fw-bold ">Email</label>
+                <input
+                  title="email"
+                  type="email"
+                  class="form-control border-primary"
+                  formControlName="username"
+                  placeholder="Inserisci la tua email"
+                  required
+                />
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label text-primary fw-bold">Password</label>
+                <input
+                  title="password"
+                  type="password"
+                  class="form-control border-primary"
+                  formControlName="password"
+                  placeholder="Inserisci la password"
+                  required
+                />
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label text-primary fw-bold">Conferma Password</label>
+                <input
+                  title="conferma"
+                  type="password"
+                  class="form-control border-primary"
+                  formControlName="conferma"
+                  placeholder="Conferma la tua password"
+                  (change)="controllaPassw()"
+                  required
+                />
+              </div>
+  
+              <!-- Error message -->
+              <div class="text-danger text-center mb-3" *ngIf="passwError">
+                {{ passwError }}
+              </div>
+  
+              <!-- Submit button -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-gradient btn-block mb-4 w-100">
+                  Registrati
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -6,6 +6,7 @@
           <div class="col w-75 mx-auto" *ngFor="let review of this.reviews$ | async" >
             <app-review
             [review]="review"
+            [currentUser]="(currentUser$ | async)"
             ></app-review>
           </div>
         </div>

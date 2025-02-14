@@ -1,14 +1,24 @@
-<nav class="navbar navbar-dark bg-primary mb-3">
+<nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <!-- Logo or Brand Name -->
-    <a class="navbar-brand fw-bold" [routerLink]="['']" (click)="home()">
+    <a class="navbar-brand fw-bold" [routerLink]="['/home']" [queryParams]="{ maxReviews: 5 }" (click)="home()">
       HOME
     </a>
 
     <!-- Navbar Links -->
     <ul class="navbar-nav me-auto">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(currentUser$ | async)">
         <a class="nav-link text-white fw-bold" [routerLink]="['/films']" (click)="premuto($event)">FILM</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <app-nav-user
+          [user]="currentUser$ | async"
+          (logout)="logout()"
+          isAuthenticated>
+      </app-nav-user>
+      <li class="nav-item" *ngIf="!(currentUser$ | async)">
+        <a class="nav-link text-white" [routerLink]="['login']">Login</a>
       </li>
     </ul>
   </div>

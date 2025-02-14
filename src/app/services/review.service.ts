@@ -4,6 +4,8 @@ import { omitBy, isNil } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { enviroment } from '../../../collegamento';
 import { Review } from '../entities/review.entity';
+import { AuthService } from './auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface ReviewFilters
 {
@@ -20,14 +22,22 @@ export class ReviewService
   reviews$= this._reviews$.asObservable();
   filtri:ReviewFilters | null=null;
 
-  constructor(protected http:HttpClient) {
-    this.fetch();
+  constructor(protected http:HttpClient, protected authSrv:AuthService ,protected toastSrv:ToastrService)
+  {
+    authSrv.currentUser$.subscribe(user=>{
+      if(user) {
+        this.refreshReviews();
+      }
+      else {
+        this._reviews$.next([]);
+      }
+    })
   }
 
   refreshReviews()
   {
     if(this.filtri!= null) {
-      this.reviews$= this.list(this.filtri)
+      this.list(this.filtri)
     }
     else {
       this.fetch();
@@ -53,7 +63,7 @@ export class ReviewService
     return result;
   }
 
-  add(newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film">>,film:string)
+  add(newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film" | "Autore">>,film:string)
   {
     const review={...newReview,Film:film};
     this.http.post<Review>(`${enviroment.apiUrl}/reviews`, review)
@@ -69,11 +79,11 @@ export class ReviewService
         this._reviews$.next(tmp);
         this.refreshReviews();
       },error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
   
-  modify(id:string, updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film">>,film:string)
+  modify(id:string, updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film"  | "Autore">>,film:string)
   {    
     const review={...updateReview,Film:film};
     this.http.patch<Review>(`${enviroment.apiUrl}/reviews/${id}/modify`,review)
@@ -84,7 +94,7 @@ export class ReviewService
         this._reviews$.next(tmp);
         this.refreshReviews();
       },error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
 
@@ -95,11 +105,10 @@ export class ReviewService
         const tmp = structuredClone(this._reviews$.value);
         const index = this._reviews$.value.findIndex(review => review.id === id);
         tmp.splice(index,1);
-        console.log(tmp);
         this._reviews$.next(tmp);
         this.refreshReviews();
       }, error => {
-        console.error(error);
+        this.toastSrv.error(error);
       });
   }
 }

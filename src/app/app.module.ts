@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,12 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { FilmsComponent } from './pages/films/films.component';
 import { FilmComponent } from './components/film/film.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { AuthInterceptor } from './utils/auth-interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,10 @@ import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.componen
     FilmsComponent,
     FilmComponent,
     FilmReviewsComponent,
+    IfAuthenticatedDirective,
+    NavUserComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +46,15 @@ import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
     {
       provide: NgbDateAdapter,
       useClass: DateAdapter
