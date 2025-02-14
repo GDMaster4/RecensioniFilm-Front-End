@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +17,7 @@ import { FilmsComponent } from './pages/films/films.component';
 import { FilmComponent } from './components/film/film.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { AuthInterceptor } from './utils/auth-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
     {
       provide: NgbDateAdapter,
       useClass: DateAdapter
