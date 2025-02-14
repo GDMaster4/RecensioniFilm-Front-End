@@ -36,7 +36,7 @@ export class ReviewService
   refreshReviews()
   {
     if(this.filtri!= null) {
-      this.reviews$= this.list(this.filtri)
+      this.list(this.filtri)
     }
     else {
       this.fetch();
