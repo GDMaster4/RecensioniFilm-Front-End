@@ -22,7 +22,7 @@ export class ReviewDetailComponent implements OnInit,OnDestroy
     Film:['', Validators.required],
     DataInserimento: [''],
     DataModifica:[''],
-    Autore:['', Validators.required],
+    // Autore:['', Validators.required],
     Testo:['', Validators.required],
     Valutazione:[0, Validators.required]
   });
@@ -53,7 +53,7 @@ export class ReviewDetailComponent implements OnInit,OnDestroy
       Film:this.tmpRev.Film.id,
       DataInserimento: this.tmpRev.DataInserimento,
       DataModifica: this.tmpRev.DataUltModifica,
-      Autore: this.tmpRev.Autore,
+      // Autore: this.tmpRev.Autore,
       Testo: this.tmpRev.Testo,
       Valutazione:this.tmpRev.Valutazione
     });
@@ -85,9 +85,8 @@ export class ReviewDetailComponent implements OnInit,OnDestroy
   {
     if(this.revForm.valid)
     {
-      const {Film,Autore,Testo,Valutazione}= this.revForm.value!;
-      const updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica" | "Film">> ={
-        Autore:Autore!,
+      const {Film,Testo,Valutazione}= this.revForm.value!;
+      const updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica" | "Film" | "Autore">> ={
         Testo:Testo!,
         Valutazione:Valutazione!
       }

@@ -62,7 +62,7 @@ export class ReviewService
     return result;
   }
 
-  add(newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film">>,film:string)
+  add(newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film" | "Autore">>,film:string)
   {
     const review={...newReview,Film:film};
     this.http.post<Review>(`${enviroment.apiUrl}/reviews`, review)
@@ -82,7 +82,7 @@ export class ReviewService
       });
   }
   
-  modify(id:string, updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film">>,film:string)
+  modify(id:string, updateReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica"| "Film"  | "Autore">>,film:string)
   {    
     const review={...updateReview,Film:film};
     this.http.patch<Review>(`${enviroment.apiUrl}/reviews/${id}/modify`,review)

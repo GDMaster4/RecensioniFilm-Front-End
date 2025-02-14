@@ -17,7 +17,6 @@ export class AddReviewComponent implements OnInit,OnDestroy
   films$= new Observable<Film[]>();
   revForm=this.fb.group({
     Film: ['', Validators.required],
-    Autore:['', Validators.required],
     Testo:['', Validators.required],
     Valutazione:[0, Validators.required]
   });
@@ -72,9 +71,8 @@ export class AddReviewComponent implements OnInit,OnDestroy
   {
     if(this.revForm.valid)
     {
-      const {Film,Autore,Testo,Valutazione}= this.revForm.value!;
-      const newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica" | "Film">> = {
-        Autore:Autore!,
+      const {Film,Testo,Valutazione}= this.revForm.value!;
+      const newReview:Partial<Omit<Review, "id" |"DataInserimento" | "DataUltModifica" | "Film" | "Autore">> = {
         Testo:Testo!,
         Valutazione:Valutazione!
       };
