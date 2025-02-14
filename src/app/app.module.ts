@@ -20,6 +20,7 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated.directiv
 import { AuthInterceptor } from './utils/auth-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NavUserComponent } from './components/nav-user/nav-user.component';
     FilmReviewsComponent,
     IfAuthenticatedDirective,
     NavUserComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
