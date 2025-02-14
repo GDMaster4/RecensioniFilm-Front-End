@@ -27,7 +27,6 @@ export class ReviewComponent
   }
 
   isCurrentUserAutor() {
-    console.log(this.currentUser!.id! == this.review!.Autore.id!);
     return this.currentUser!.id! == this.review!.Autore.id! ? true : false;
   }
 }
