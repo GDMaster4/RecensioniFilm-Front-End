@@ -4,6 +4,7 @@ import { omitBy, isNil } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { enviroment } from '../../../collegamento';
 import { Review } from '../entities/review.entity';
+import { AuthService } from './auth.service';
 
 export interface ReviewFilters
 {
@@ -20,8 +21,16 @@ export class ReviewService
   reviews$= this._reviews$.asObservable();
   filtri:ReviewFilters | null=null;
 
-  constructor(protected http:HttpClient) {
-    this.fetch();
+  constructor(protected http:HttpClient, protected authSrv:AuthService)
+  {
+    authSrv.currentUser$.subscribe(user=>{
+      if(user) {
+        this.refreshReviews();
+      }
+      else {
+        this._reviews$.next([]);
+      }
+    })
   }
 
   refreshReviews()

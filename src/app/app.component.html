@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <!-- Logo or Brand Name -->
-    <a class="navbar-brand fw-bold" [routerLink]="['']" (click)="home()">
+    <a class="navbar-brand fw-bold" [routerLink]="['/home']" [queryParams]="{ maxReviews: 5 }" (click)="home()">
       HOME
     </a>
 
