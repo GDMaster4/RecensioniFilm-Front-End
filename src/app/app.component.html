@@ -7,8 +7,18 @@
 
     <!-- Navbar Links -->
     <ul class="navbar-nav me-auto">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="(currentUser$ | async)">
         <a class="nav-link text-white fw-bold" [routerLink]="['/films']" (click)="premuto($event)">FILM</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <app-nav-user
+          [user]="currentUser$ | async"
+          (logout)="logout()"
+          isAuthenticated>
+      </app-nav-user>
+      <li class="nav-item" *ngIf="!(currentUser$ | async)">
+        <a class="nav-link text-white" [routerLink]="['login']">Login</a>
       </li>
     </ul>
   </div>
