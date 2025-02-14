@@ -105,7 +105,6 @@ export class ReviewService
         const tmp = structuredClone(this._reviews$.value);
         const index = this._reviews$.value.findIndex(review => review.id === id);
         tmp.splice(index,1);
-        console.log(tmp);
         this._reviews$.next(tmp);
         this.refreshReviews();
       }, error => {
