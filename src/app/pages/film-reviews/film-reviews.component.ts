@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { FilmService } from '../../services/film.service';
 import { Review } from '../../entities/review.entity';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-film-reviews',
@@ -17,8 +18,9 @@ export class FilmReviewsComponent implements OnInit,OnDestroy
   anno:number=0;
 
   reviews$ = new Observable<Review[]>();
+  currentUser$= this.authSrv.currentUser$;
 
-  constructor(protected filmSrv: FilmService, protected activatedRoute: ActivatedRoute){}
+  constructor(protected filmSrv: FilmService, protected activatedRoute: ActivatedRoute, protected authSrv:AuthService){}
   
   ngOnInit(): void
   {

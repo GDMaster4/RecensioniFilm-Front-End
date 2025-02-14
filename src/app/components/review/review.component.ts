@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Review } from '../../entities/review.entity';
 import { Router } from '@angular/router';
+import { User } from '../../entities/user.entity';
 
 @Component({
   selector: 'app-review',
@@ -12,6 +13,9 @@ export class ReviewComponent
   @Input()
   review:Review | null=null;
 
+  @Input()
+  currentUser:User | null = null;
+
   constructor(protected router:Router){}
 
   getStarsArray(rating: number): number[] {
@@ -20,5 +24,10 @@ export class ReviewComponent
 
   isReviewFilm() {
     return this.router.url.includes("films") ? true : false;
+  }
+
+  isCurrentUserAutor() {
+    console.log(this.currentUser!.id! == this.review!.Autore.id!);
+    return this.currentUser!.id! == this.review!.Autore.id! ? true : false;
   }
 }
