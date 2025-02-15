@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { omitBy, isNil } from 'lodash';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { enviroment } from '../../../collegamento';
 import { Review } from '../entities/review.entity';
 import { AuthService } from './auth.service';
@@ -58,6 +58,15 @@ export class ReviewService
     const q=omitBy(filters,isNil);
     const result =this.http.get<Review[]>(`${enviroment.apiUrl}/reviews`,{params: q});
     result.subscribe(reviews=>{
+      this._reviews$.next(reviews);
+    });
+    return result;
+  }
+
+  reviewsFilm(id:string)
+  {
+    const result= this.http.get<Review[]>(`${enviroment.apiUrl}/reviews/${id}`);
+    result.subscribe(reviews => {
       this._reviews$.next(reviews);
     });
     return result;

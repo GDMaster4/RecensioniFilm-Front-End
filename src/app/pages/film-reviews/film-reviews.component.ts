@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { FilmService } from '../../services/film.service';
 import { Review } from '../../entities/review.entity';
 import { AuthService } from '../../services/auth.service';
+import { ReviewService } from '../../services/review.service';
+import { FilmService } from '../../services/film.service';
 
 @Component({
   selector: 'app-film-reviews',
@@ -17,23 +18,25 @@ export class FilmReviewsComponent implements OnInit,OnDestroy
   titolo:string="";
   anno:number=0;
 
-  reviews$ = new Observable<Review[]>();
+  reviews$ =this.revSrv.reviews$;
   currentUser$= this.authSrv.currentUser$;
 
-  constructor(protected filmSrv: FilmService, protected activatedRoute: ActivatedRoute, protected authSrv:AuthService){}
+  constructor(protected revSrv: ReviewService, protected filmSrv:FilmService,
+    protected activatedRoute: ActivatedRoute, protected authSrv:AuthService){}
   
   ngOnInit(): void
   {
-    this.reviews$ = this.activatedRoute.params.pipe(
-      switchMap(params => {
-        const id = params['id'];
-        return this.filmSrv.reviewsFilm(id);
-      }),
+    this.activatedRoute.params.pipe(
       takeUntil(this.destroyed$)
-    );
-    this.reviews$.subscribe(reviews => {
-      this.titolo = reviews[0].Film.Titolo;
-      this.anno = reviews[0].Film.AnnoUscita;
+    )
+    .subscribe(params => {
+      this.id$= params['id'];
+      this.revSrv.reviewsFilm(this.id$)
+    });
+    const film= this.filmSrv.one(this.id$);
+    film.subscribe(film=>{
+      this.titolo=film.Titolo;
+      this.anno=film.AnnoUscita;
     });
   }
 

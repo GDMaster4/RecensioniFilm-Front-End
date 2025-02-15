@@ -34,7 +34,8 @@ export class FilmService
       });
   }
 
-  reviewsFilm(id:string) {
-    return this.http.get<Review[]>(`${enviroment.apiUrl}/films/${id}/reviews`);
+  one(id:string)
+  {
+    return this.http.get<Film>(`${enviroment.apiUrl}/films/${id}`)
   }
 }
