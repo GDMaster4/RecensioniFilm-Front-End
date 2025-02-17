@@ -7,6 +7,7 @@ import { FilmsComponent } from './pages/films/films.component';
 import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
     path:"register",
     pathMatch:"full",
     component:RegisterComponent
+  },
+  {
+    path:"profilo",
+    pathMatch:"full",
+    component:ProfiloComponent
   },
   {
     path:"home",
