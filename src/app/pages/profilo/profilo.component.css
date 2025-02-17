@@ -1,0 +1,28 @@
+/* Card personalizzata */
+.card-custom {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Input personalizzati */
+.form-group {
+    border: 2px solid #6a11cb;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}

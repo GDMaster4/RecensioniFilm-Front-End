@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RegisterComponent } from './pages/register/register.component';
     NavUserComponent,
     LoginComponent,
     RegisterComponent,
+    ProfiloComponent,
   ],
   imports: [
     BrowserModule,

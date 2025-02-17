@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <!-- Header con sfondo viola e testo bianco -->
+            <div class="card card-custom p-4">
+                <h2 class="text-center mb-4 fw-bold">DETTAGLI PROFILO</h2>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <!-- Righe di dettagli -->
+                        <div class="form-group d-flex align-items-center justify-content-between border-primary">
+                            <label for="nomeTit" class="font-weight-bold">Nome</label>
+                            <p class="nomeTit mb-0 text-dark">{{(currentUser$ | async)!.firstName}}</p>
+                        </div>
+                        <br>
+                        <div class="form-group d-flex align-items-center justify-content-between border-primary">
+                            <label for="cognTit" class="font-weight-bold">Cognome</label>
+                            <p class="cognTit mb-0 text-dark">{{(currentUser$ | async)!.lastName}}</p>
+                        </div>
+                        <br>
+                        <div class="form-group d-flex align-items-center justify-content-between border-primary">
+                            <label for="email" class="font-weight-bold">Email</label>
+                            <p class="email mb-0 text-dark">{{(currentUser$ | async)!.email}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
