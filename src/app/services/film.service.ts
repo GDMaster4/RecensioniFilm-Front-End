@@ -14,17 +14,7 @@ export class FilmService
   protected _films$= new BehaviorSubject<Film[]>([]);
   films$= this._films$.asObservable();
 
-  constructor(protected http:HttpClient, protected authSrv:AuthService)
-  {
-    authSrv.currentUser$.subscribe(user=>{
-      if(user) {
-        this.fetch();
-      }
-      else {
-        this._films$.next([]);
-      }
-    })
-  }
+  constructor(protected http:HttpClient) {}
 
   fetch()
   {
