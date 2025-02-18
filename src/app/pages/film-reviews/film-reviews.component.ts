@@ -45,8 +45,4 @@ export class FilmReviewsComponent implements OnInit,OnDestroy
     this.destroyed$.next();
     this.destroyed$.complete();
   }
-
-  isShrek() {
-    return  this.titolo.toLowerCase().includes("shrek") ? true : false;
-  }
 }

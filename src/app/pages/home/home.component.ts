@@ -44,15 +44,4 @@ export class HomeComponent implements OnInit,OnDestroy
   applyFilters(value:ReviewFilters){
     this.updateQueryParams$.next(value);
   }
-  
-  isGianluca()
-  {
-    let isGianluca = false;
-    this.currentUser$.subscribe(user => {
-      if (user && user.fullName === 'Gianluca Dal Maso') {
-        isGianluca = true;
-      }
-    });
-    return isGianluca;
-  }
 }
