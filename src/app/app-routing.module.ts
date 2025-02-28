@@ -8,6 +8,7 @@ import { FilmReviewsComponent } from './pages/film-reviews/film-reviews.componen
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,10 +29,12 @@ const routes: Routes = [
   {
     path:"profilo",
     pathMatch:"full",
+    canActivate:[authGuard],
     component:ProfiloComponent
   },
   {
     path:"home",
+    canActivate:[authGuard],
     pathMatch:"prefix",
     component:HomeComponent,
     resolve:{
@@ -42,6 +45,7 @@ const routes: Routes = [
   },
   {
     path:"films",
+    canActivate:[authGuard],
     children: [
       {
         path: '',
